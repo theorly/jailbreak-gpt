@@ -23,7 +23,7 @@ def file_to_dataframe(file_path):
     return df
 
 def select_llm(llm_choice):
-    llms = ["llama3", "gemma2", "gemini"]  # Sostituisci con i nomi effettivi degli LLM disponibili
+    llms = ["llama3", "gemma2", "gemini", "claude"]  # Sostituisci con i nomi effettivi degli LLM disponibili
     if llm_choice == "all":
         return llms
     elif llm_choice in llms:
@@ -62,10 +62,10 @@ def main_menu():
 
 def modify_llm_options():
     options = {
-        "top_p": 0.9,
-        "presence_penalty": 1.5,
-        "frequency_penalty": 1.0,
         "temperature": 0.8,
+        "top_p": 0.9,
+        "top_k": 64,
+        "max_output_tokens" : 8192
     }
 
     print("Current parameters:")
@@ -76,12 +76,18 @@ def modify_llm_options():
     if modify == 'y':
         for key in options:
             new_value = input(f"Enter new value for {key} (or press enter to keep current value): ").strip()
+            #if new_value and key == ['temperature', 'top_p']:
             if new_value:
-                options[key] = float(new_value)
-        print("Options for all LLM updated to:")
+                if key == 'temperature' or key == 'top_p':
+                    options[key] = float(new_value)
+                elif key == 'top_k' or key == 'max_output_tokens':
+            #elif new_value and key == ['top_k', 'max_output_tokens']:
+                    options[key] = int(new_value)
+        print("Options for LLM updated to:")
         for key, value in options.items():
             print(f"{key}: {value}")
-
+        
+    
     return options
 
 def update_options(llm, options):
@@ -91,6 +97,7 @@ def update_options(llm, options):
         llm_module = importlib.import_module(module_name)
         
         llm_module.options = options
+        print(llm_module.options)
        
     except ModuleNotFoundError:
         print(f"Modulo {llm} non trovato.")
