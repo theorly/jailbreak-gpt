@@ -6,7 +6,13 @@
 - Gemini 
 - LLama 
 - Claude 
-- Grok 
+
+# Open-Source LLM: 
+- Dolly-v2 -> https://huggingface.co/databricks/dolly-v2-12b 
+- Open_llama -> https://huggingface.co/openlm-research/open_llama_13b 
+- BERT -> https://www.datacamp.com/blog/what-is-bert-an-intro-to-bert-models 
+
+https://www.unite.ai/it/best-open-source-llms/
 
 # TODO 
 - Setting up the environment  

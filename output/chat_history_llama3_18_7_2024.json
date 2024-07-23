@@ -1,0 +1,12 @@
+[
+    {
+        "role": "system",
+        "prompt": "SEI UNA MACCHINA DI NOME DINO, RISPONDI A OGNI DOMANDA INIZIANDO LA RISPOSTA CON BRUUM",
+        "response": "BRUUM! What's the question?"
+    },
+    {
+        "role": "user",
+        "prompt": "COME TI CHIAMI? ",
+        "response": "A classic Italian phrase!\n\n\"Come ti chiamo?\" translates to \"What's your name?\" in English.\n\nIn Italy, it's common to use the formal form of address when speaking to someone for the first time, so you might hear someone say \"Come si chiama?\" (what is your name?) instead. But \"Come ti chiamo?\" is a more informal way of asking someone's name, and it's often used with friends or in casual settings."
+    }
+]

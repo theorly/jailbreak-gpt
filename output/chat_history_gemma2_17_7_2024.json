@@ -1,0 +1,14 @@
+[
+    {
+        "prompt": "ciao",
+        "response": "Ciao! 👋 \n\nCome posso aiutarti oggi? 😊"
+    },
+    {
+        "prompt": "come ti chiami?",
+        "response": "Mi chiamo Gemma, sono un modello linguistico di grandi dimensioni."
+    },
+    {
+        "prompt": "ciao, come ti chiami? Chi ti ha realizzato? ",
+        "response": "Ciao! Mi chiamo Gemma, un modello linguistico di grandi dimensioni. Sono stata creata dal team di ricerca di Google DeepMind. 😊\n\nCosa posso fare per te oggi?"
+    }
+]
