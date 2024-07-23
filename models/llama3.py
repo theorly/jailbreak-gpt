@@ -6,6 +6,8 @@ import os
 
 url = "http://localhost:11434/api/chat"
 
+options = {}
+
 # Funzione per interagire con il modello Llama3 e salvare i dati in un file JSON
 def llama3(prompt, json_file, role = 'user'):
     chat_history = []
@@ -14,32 +16,10 @@ def llama3(prompt, json_file, role = 'user'):
     if os.path.exists(json_file):
         with open(json_file, 'r', encoding='utf-8') as f:
             chat_history = json.load(f)
-        
-    if role == 'system':
-        # Memorizza l'interazione attuale
-        chat_history.append({
-            "role" : role,
-            "content": prompt,
-        })
 
-        response_content = interactive_chat(chat_history)
-
-        chat_history.append({
-            "role": "assistant",
-            "content": response_content
-        })
-
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(chat_history, f, ensure_ascii=False, indent=4)
-        
-        # Stampa la risposta del modello
-        print("Llama3:", response_content)
-    
-    else:
-
-        while True:
+    while True:
             # Interrogazione del modello Llama3
-           
+             
             # Memorizza l'interazione attuale
             chat_history.append({
                 "role" : role,
@@ -52,6 +32,7 @@ def llama3(prompt, json_file, role = 'user'):
             "role": "assistant",
             "content": response_content
             })
+            
 
             # Salva la cronologia aggiornata nel file JSON
             with open(json_file, 'w', encoding='utf-8') as f:
@@ -70,13 +51,15 @@ def llama3(prompt, json_file, role = 'user'):
                 prompt = next_prompt
                 role = 'user' #reset role
 
-        print("Chat salvata in", json_file)
+    print("Chat salvata in", json_file)
 
 def interactive_chat(chat_history):
     data = {
         "model": "llama3",
         "messages": chat_history,
         "stream": False,
+        "options" : options
+        
         #"format": "json",
     }
 

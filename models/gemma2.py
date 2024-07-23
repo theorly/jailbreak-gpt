@@ -6,6 +6,8 @@ import os
 
 url = "http://localhost:11434/api/chat"
 
+options = {}
+
 # Funzione per interagire con il modello Llama3 e salvare i dati in un file JSON
 def gemma2(prompt, json_file, role = 'user'):
     chat_history = []
@@ -15,26 +17,6 @@ def gemma2(prompt, json_file, role = 'user'):
         with open(json_file, 'r', encoding='utf-8') as f:
             chat_history = json.load(f)
         
-    if role == 'system':
-        # Memorizza l'interazione attuale
-        chat_history.append({
-            "role" : role,
-            "content": prompt,
-        })
-
-        response_content = interactive_chat(chat_history)
-
-        chat_history.append({
-            "role": "assistant",
-            "content": response_content
-        })
-
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(chat_history, f, ensure_ascii=False, indent=4)
-        
-        # Stampa la risposta del modello
-        print("gemma2:", response_content)
-    
     else:
 
         while True:
@@ -77,6 +59,7 @@ def interactive_chat(chat_history):
         "model": "llama3",
         "messages": chat_history,
         "stream": False,
+        "options" : options
         #"format": "json",
     }
 

@@ -1,11 +1,14 @@
 import argparse
 import os
 import pandas as pd
+import sys
 from utility.token_counts import get_token
 from utility import utils
 
 # Configura l'URL e la chiave API (modifica con i tuoi dettagli)
-api_url = "http://localhost:11434/api/chat"  # Esempio di URL API
+#api_url = "http://localhost:11434/api/chat"  # Esempio di URL API
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'models'))
 
 
 def start(): 
@@ -18,13 +21,16 @@ def start():
                
                 selected_llms = utils.select_llm(args.llm)
                 print(f"Selected LLM: {selected_llms}")
-                sys = input("Do you want to enter a system message? (y/n): ")
+                sys = input("Do you want to enter a system prompt? (y/n): ")
                 if sys == "y":
                     for llm in selected_llms:
-                        utils.system_message(llm)
-                prompt = input("Enter your prompt: ")
-                for llm in selected_llms:
-                    utils.run_llm_function(llm, prompt)
+                        #utils.system_message(llm)
+                        sys_prompt = input(f"Enter a system prompt for {llm}:\n")
+                        utils.run_llm_function(llm, sys_prompt, role='system')
+                else: 
+                    prompt = input("Enter your prompt: ")
+                    for llm in selected_llms:
+                        utils.run_llm_function(llm, prompt)
                         
             elif scelta == '2':
                 task = input("Single prompt or file? - Digit 'prompt' for single prompt or 'file' for file: \n")
@@ -41,8 +47,15 @@ def start():
                     else:
                         print("File not found. Retry.")
                         raise FileNotFoundError
-                
+
             elif scelta == '3':
+                selected_llms = utils.select_llm(args.llm)
+                print("Modify LLM options...")
+                new_options = utils.modify_llm_options()
+                for llm in selected_llms:
+                    utils.update_options(llm, new_options)
+
+            elif scelta == '4':
                 print("Exit...")
                 break
 
@@ -82,8 +95,6 @@ if __name__ == "__main__":
                         
                         for llm in selected_llms:
                                     print(f"Selected LLM: {selected_llms}")
-                                    #prompt_example = input("Enter your prompt: ")
-                                    #print(f"Response: {llm(prompt_example)}")
                                     utils.run_llm_function(llm, prompt)
             else: 
                 print("Exit if.")

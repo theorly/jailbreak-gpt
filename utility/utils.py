@@ -6,7 +6,6 @@ from datetime import datetime
 import importlib
 from utility.token_counts import get_token
 
-sys.path.append(os.path.join(os.path.dirname(__file__), 'models'))
 
 def file_to_dataframe(file_path):
     # Controlla l'estensione del file
@@ -24,7 +23,7 @@ def file_to_dataframe(file_path):
     return df
 
 def select_llm(llm_choice):
-    llms = ["llama3", "gemma2"]  # Sostituisci con i nomi effettivi degli LLM disponibili
+    llms = ["llama3", "gemma2", "gemini"]  # Sostituisci con i nomi effettivi degli LLM disponibili
     if llm_choice == "all":
         return llms
     elif llm_choice in llms:
@@ -57,9 +56,43 @@ def main_menu():
     print("Select what to do:")
     print("1. Run a LLM -   Run a LLM model with a prompt.")
     print("2. Get token counts  -   Get token counts from a prompt.")
-    print("3. Exit")
+    print("3. Modify LLM options - Modify the options of the LLM model.")
+    print("4. Exit")
 
-def system_message(llm):
-    sys_message = input("Enter a system prompt:\n")
-    run_llm_function(llm,sys_message,"system")
 
+def modify_llm_options():
+    options = {
+        "top_p": 0.9,
+        "presence_penalty": 1.5,
+        "frequency_penalty": 1.0,
+        "temperature": 0.8,
+    }
+
+    print("Current parameters:")
+    for key, value in options.items():
+        print(f"{key}: {value}")
+
+    modify = input("Do you want to modify the options? (y/n): ").strip().lower()
+    if modify == 'y':
+        for key in options:
+            new_value = input(f"Enter new value for {key} (or press enter to keep current value): ").strip()
+            if new_value:
+                options[key] = float(new_value)
+        print("Options for all LLM updated to:")
+        for key, value in options.items():
+            print(f"{key}: {value}")
+
+    return options
+
+def update_options(llm, options):
+    module_name = llm
+
+    try:
+        llm_module = importlib.import_module(module_name)
+        
+        llm_module.options = options
+       
+    except ModuleNotFoundError:
+        print(f"Modulo {llm} non trovato.")
+
+    
