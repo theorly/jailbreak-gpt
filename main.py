@@ -16,19 +16,22 @@ def start():
         while True:
             utils.main_menu()
             scelta = input("Select what to do: ")
+            print("----------------------")
 
             if scelta == '1':
                
                 selected_llms = utils.select_llm(args.llm)
                 print(f"Selected LLM: {selected_llms}")
+                print("----------------------")
                 sys = input("Do you want to enter a system prompt? (y/n): ")
                 if sys == "y":
                     for llm in selected_llms:
-                        #utils.system_message(llm)
                         sys_prompt = input(f"Enter a system prompt for {llm}:\n")
+                        print("----------------------")
                         utils.run_llm_function(llm, sys_prompt, role='system')
                 else: 
                     prompt = input("Enter your prompt: ")
+                    print("----------------------")
                     for llm in selected_llms:
                         utils.run_llm_function(llm, prompt)
                         
@@ -51,11 +54,13 @@ def start():
             elif scelta == '3':
                 selected_llms = utils.select_llm(args.llm)
                 print("Modify LLM options...")
+                print("----------------------")
                 new_options = utils.modify_llm_options()
                 for llm in selected_llms:
                     utils.update_options(llm, new_options)
 
             elif scelta == '4':
+                print("----------------------")
                 print("Exit...")
                 break
 
@@ -66,6 +71,7 @@ def start():
 
 if __name__ == "__main__":
     print("Jailbreak-gpt is starting! \n")
+    print("----------------------")
 
     parser = argparse.ArgumentParser(description="Software for Prompt Engineering. Select a mode to use.")
     parser.add_argument("--mode", choices=["select_llm"], help="Select a particular llm to use (default set to all)")
@@ -78,7 +84,9 @@ if __name__ == "__main__":
     if args.mode == "select_llm":
 
         if args.llm:
+            
             selected_llms = utils.select_llm(args.llm)
+                
             if args.prompt_file:
                 prompt_path = args.prompt_file
                 df = utils.file_to_dataframe(prompt_path)
@@ -97,7 +105,6 @@ if __name__ == "__main__":
                                     print(f"Selected LLM: {selected_llms}")
                                     utils.run_llm_function(llm, prompt)
             else: 
-                print("Exit if.")
                 start()
 
 
