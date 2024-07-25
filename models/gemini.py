@@ -4,6 +4,7 @@ import json
 import os
 
 # Carica le variabili d'ambiente dal file .env
+
 load_dotenv()
 
 # Ottieni la chiave API dalla variabile d'ambiente
