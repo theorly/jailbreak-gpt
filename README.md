@@ -1,21 +1,17 @@
 # jailbreak-gpt
- Thesis project for Jailbreaking LLMs
+ Thesis project for studying the Jailbreak of LLMs. 
 
-# LLM used: 
-- GPT 
+# LLM now supported: 
 - Gemini 
 - LLama3
 - Claude
 - Gemma2 
-- Phi3 
 
+# What is it 
+Automated tool in Python for the query of various LLM and analysis of different prompts. 
 
-https://www.unite.ai/it/best-open-source-llms/
+# How to use 
 
-# TODO 
-- Setting up the environment  
-- Get the API key
-- Search of the Prompts 
-- Select the metrics to analyze the results 
-- Experiments 
-- Collect and analyze the results
+Runs from CLI and offers several modes of use (to be specified in the startup command): 
+-	 --mode select_llm -llm [LLM to be executed]: you can choose to run the code and experiment with the prompts by running only one of the available models. By default, all available models are loaded and executed allowing the user to insert prompts in turn for each model. 
+-  ---prompt_file [PATH] --prompt_id [ID]: you can specify a path to a specific ". xlsx" or ". csv" , appropriately made, from which to load the prompts. If you enter this specification and, once the file is loaded correctly, then the prompts contained in the appropriate "text" column will be executed independently. It is also possible to select only a specific prompt by indicating the ...
