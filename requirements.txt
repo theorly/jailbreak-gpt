@@ -1,0 +1,9 @@
+pandas
+argparse
+sys 
+google-generativeai 
+anthropic
+openpyxl
+python-dotenv 
+transformers
+tokenizers 
