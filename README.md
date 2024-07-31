@@ -1,5 +1,6 @@
 # jailbreak-gpt
  Thesis project for studying the Jailbreak of LLMs. 
+**This is a tool in development yet, so many more features have to be added.**  
 
 # LLM now supported: 
 - Gemini 
@@ -8,7 +9,6 @@
 - Gemma2 
 
 # What is it 
-**This is a tool in development yet, so many more features have to be added.**  
 Automated tool in Python for the query of various LLM and analysis of different prompts.  
 When the queries to the various LLMs are finished, a .json file is created containing the "chat_history".
 
