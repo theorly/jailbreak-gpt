@@ -56,7 +56,7 @@ def gemma2(prompt, json_file, role = 'user'):
 
 def interactive_chat(chat_history):
     data = {
-        "model": "llama3",
+        "model": "gemma2",
         "messages": chat_history,
         "stream": False,
         "options" : options

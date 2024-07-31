@@ -30,3 +30,5 @@ Once executed:
 # EXAMPLE OF USE 
 
 ![Simple example](docs/img.jpg)
+
+[![Demo](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DhSxCJx23zDo)](https://www.youtube.com/watch?v=hSxCJx23zDo)
