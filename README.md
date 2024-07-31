@@ -31,4 +31,7 @@ Once executed:
 
 ![Simple example](docs/img.jpg)
 
-[![Demo](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DhSxCJx23zDo)](https://www.youtube.com/watch?v=hSxCJx23zDo)
+# VIDEO DEMO
+<a align="center" href="https://www.youtube.com/watch?v=hSxCJx23zDo">
+  <img src="https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DhSxCJx23zDo" alt="Demo" title="Demo"/>
+</a>
