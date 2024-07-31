@@ -8,8 +8,8 @@
 - Gemma2 
 
 # What is it 
-Automated tool in Python for the query of various LLM and analysis of different prompts.  
 **This is a tool in development yet, so many more features have to be added.**  
+Automated tool in Python for the query of various LLM and analysis of different prompts.  
 When the queries to the various LLMs are finished, a .json file is created containing the "chat_history".
 
 # How to use 
