@@ -24,3 +24,4 @@ Once executed:
 
 # EXAMPLE OF USE 
 
+![Simple example](docs/img.jpg)
