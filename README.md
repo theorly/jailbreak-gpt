@@ -1,6 +1,7 @@
 # jailbreak-gpt
  Thesis project for studying the Jailbreak of LLMs. 
 **This is a tool in development yet, so many more features have to be added.**  
+For the moment the tool has been created from command line and to run it you need to have all the necessary requirements as well as the API_KEY of Google Gemini and Claude that, For reasons of privacy and lack of resources, they have been hidden in the code.
 
 # LLM now supported: 
 - Gemini 
